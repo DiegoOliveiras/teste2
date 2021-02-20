@@ -59,9 +59,6 @@ class SalesReportsItemsController < ApplicationController
         render json: @salesReportsItem
     end 
 
-    def upload
-    end
-
     def import
         SalesReportsItem.import(params[:file])
         redirect_to '/report'

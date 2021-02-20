@@ -8,6 +8,7 @@ gem 'bcrypt'
 gem 'jwt'
 gem 'simple_command'
 gem 'pg'
+gem 'rspec-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.2', '>= 6.1.2.1'

@@ -1,0 +1,133 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+
+<table class="table table-striped" style="width:100%">
+    <tr> 
+        <th colspan="14">Monthly Sales (excel.GST)</th>            
+    </tr>    
+    <tr><td colspan="14">Comunity % ALL | NZ Only | AU Only</td></tr>
+    <tr>
+        <td>Year</td>
+        <td>January</td>
+        <td>February</td>
+        <td>March</td>
+        <td>April</td>
+        <td>May</td>
+        <td>June</td>
+        <td>July</td>
+        <td>August</td>
+        <td>September</td>
+        <td>October</td>
+        <td>November</td>
+        <td>December</td>
+        <td>YTD</td>
+    </tr>
+    <tr>
+        <td>From <%=params[:start_year]%> to <%=params[:start_year].to_i+1%></td>
+        <%for i in 0..11 do%>
+            <td>$ <%= @sales_value_per_month_by_start_year[i].to_f.round(2)%></td>
+        <%end%>       
+        <td></td> 
+    </tr>
+    <tr>
+        <td>From <%=params[:end_year]%> to <%=params[:end_year].to_i+1%></td>
+        <%for i in 0..11 do%>
+            <td>$ <%= @sales_value_per_month_by_end_year[i].to_f.round(2)%></td>
+        <%end%>    
+        <td></td> 
+    </tr>
+    <tr>
+        <td>Diff</td>
+        <%for i in 0..11 do%>
+            <td>$ <%= (@sales_value_per_month_by_end_year[i]-@sales_value_per_month_by_start_year[i]).round(2)%></td>
+        <%end%> 
+        <td></td>
+    </tr>
+    <tr>
+        <td>%</td>
+        <%for i in 0..11 do%>
+            <td> <%= ((@sales_value_per_month_by_end_year[i]-@sales_value_per_month_by_start_year[i])*100/@sales_value_per_month_by_start_year[i]).round(2) %> </td>
+        <%end%>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Comunity % AU Only</td>
+        <td>??</td>
+        <td colspan="12"></td>
+    </tr>
+    <tr>
+        <td>January - <%=params[:start_year]%> (MTD)</td>
+        <td>$ <%= @mtd_by_start_year[0].round(2)%></td>
+        <td colspan="12"></td>
+    </tr>
+    <tr>
+        <td>January - <%=params[:end_year]%> (MTD)</td>
+        <td>$ <%= @mtd_by_end_year[0].round(2)%></td>
+        <td colspan="12">Percentage change: <%= ((@mtd_by_end_year[0]-@mtd_by_start_year[0])*100/@mtd_by_start_year[0]).round(2)%>%</td>
+    </tr>        
+</table>
+<br/><br/>
+<table class="table table-striped" style="width:100%">
+    <tr> 
+        <th colspan="14">Gross Profit</th>            
+    </tr>  
+        <tr><td colspan="14">Comunity % ALL | NZ Only | AU Only</td></tr>
+    <tr>
+        <td>Year</td>
+        <td>January</td>
+        <td>February</td>
+        <td>March</td>
+        <td>April</td>
+        <td>May</td>
+        <td>June</td>
+        <td>July</td>
+        <td>August</td>
+        <td>September</td>
+        <td>October</td>
+        <td>November</td>
+        <td>December</td>
+        <td>YTD</td>
+    </tr>
+    <tr>
+        <td>From <%=params[:start_year]%> to <%=params[:start_year].to_i+1%></td>
+        <%for i in 0..11 do%>
+            <td>$ <%= @sales_profit_per_month_by_start_year[i].to_f.round(2)%></td>
+        <%end%> 
+        <td></td>      
+    </tr>
+    <tr>
+        <td>From <%=params[:end_year]%> to <%=params[:end_year].to_i+1%></td>
+        <%for i in 0..11 do%>
+            <td>$ <%= @sales_profit_per_month_by_end_year[i].to_f.round(2)%></td>
+        <%end%>   
+        <td></td>  
+    </tr>
+    <tr>
+        <td>Diff</td>
+        <%for i in 0..11 do%>
+            <td>$ <%= (@sales_profit_per_month_by_end_year[i].to_f-@sales_profit_per_month_by_start_year[i].to_f).round(2)%></td>
+        <%end%> 
+        <td></td>
+    </tr>
+    <tr>
+        <td>%</td>
+        <%for i in 0..11 do%>
+            <td> <%= ((@sales_profit_per_month_by_end_year[i].to_f-@sales_profit_per_month_by_start_year[i].to_f)*100/@sales_profit_per_month_by_start_year[i]).round(2) %> </td>
+        <%end%>
+        <td></td>
+    </tr>
+    <tr>
+        <td>January - <%=params[:start_year]%> (MTD)</td>
+        <td>$ <%= @mtd_by_start_year[1].round(2)%></td>
+        <td colspan="12"></td>
+    </tr>
+    <tr>
+        <td>January - <%=params[:end_year]%> (MTD)</td>
+        <td>$ <%= @mtd_by_end_year[1].round(2)%></td>
+        <td colspan="12">Percentage change: <%= ((@mtd_by_end_year[1]-@mtd_by_start_year[1])*100/@mtd_by_start_year[1]).round(2)%>%</td>
+    </tr>         
+</table>

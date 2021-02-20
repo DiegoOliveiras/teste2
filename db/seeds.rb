@@ -1,0 +1,1 @@
+item1 = SalesReportsItem.create(apn_code: 2770000000031, rrp: 0, last_buy_price: 0, item_description: "Cards", author: "",  product_category: "", actual_stock_on_hand: 0, trans_date: 15/04/2004, trans_time: "13:35", trans_document: "POS #:   6", trans_reference: "POS:000038", trans_quantity: 6, trans_total_extax_value: 19.73, trans_total_tax: 1.97, trans_total_discount_given: 0)

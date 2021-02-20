@@ -56,7 +56,7 @@ class SalesReportsItem < ApplicationRecord
     def self.get_mtd_by_year(year)
         mtd_by_year = Array.new        
         first_day = Date.new(year.to_i, 1, 1)
-        last_day = Date.new(year.to_i, 1, Time.new.day)
+        last_day = Date.new(year.to_i, 1, Time.new.day-1)
         sales_per_month_by_year = where(:trans_date => first_day..last_day)
         mtd_sales_profit_by_year = 0
         mtd_sales_value_by_year = 0
@@ -65,5 +65,19 @@ class SalesReportsItem < ApplicationRecord
             mtd_sales_profit_by_year += item.calculate_sale_profit
         end
         return mtd_sales_value_by_year, mtd_sales_profit_by_year
+    end
+
+    def self.get_ytd_by_year(year)
+        ytd_by_year = Array.new        
+        first_day = Date.new(year.to_i, 1, 1)
+        last_day = Date.new(year.to_i, Time.new.month, Time.new.day-1)
+        sales_per_month_by_year = where(:trans_date => first_day..last_day)
+        ytd_sales_profit_by_year = 0
+        ytd_sales_value_by_year = 0
+        sales_per_month_by_year.each do |item|
+            ytd_sales_value_by_year += item.calculate_sale_value
+            ytd_sales_profit_by_year += item.calculate_sale_profit
+        end
+        return ytd_sales_value_by_year, ytd_sales_profit_by_year
     end
 end

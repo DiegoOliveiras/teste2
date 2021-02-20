@@ -29,30 +29,30 @@ table, th, td {
     <tr>
         <td>From <%=params[:start_year]%> to <%=params[:start_year].to_i+1%></td>
         <%for i in 0..11 do%>
-            <td>$ <%= @sales_value_per_month_by_start_year[i].to_f.round(2)%></td>
+            <td>$ <%= @sales_value_per_month_by_start_year[i].round(2)%></td>
         <%end%>       
-        <td></td> 
+        <td>$ <%= @ytd_by_start_year[0].round(2)%></td> 
     </tr>
     <tr>
         <td>From <%=params[:end_year]%> to <%=params[:end_year].to_i+1%></td>
         <%for i in 0..11 do%>
-            <td>$ <%= @sales_value_per_month_by_end_year[i].to_f.round(2)%></td>
+            <td>$ <%= @sales_value_per_month_by_end_year[i].round(2)%></td>
         <%end%>    
-        <td></td> 
+        <td>$ <%= @ytd_by_end_year[0].round(2)%></td> 
     </tr>
     <tr>
         <td>Diff</td>
         <%for i in 0..11 do%>
             <td>$ <%= (@sales_value_per_month_by_end_year[i]-@sales_value_per_month_by_start_year[i]).round(2)%></td>
         <%end%> 
-        <td></td>
+        <td>$ <%= (@ytd_by_end_year[0]-@ytd_by_start_year[0]).round(2)%></td>
     </tr>
     <tr>
         <td>%</td>
         <%for i in 0..11 do%>
             <td> <%= ((@sales_value_per_month_by_end_year[i]-@sales_value_per_month_by_start_year[i])*100/@sales_value_per_month_by_start_year[i]).round(2) %> </td>
         <%end%>
-        <td></td>
+        <td><%= ((@ytd_by_end_year[0]-@ytd_by_start_year[0])*100/-@ytd_by_start_year[0]).round(2)%></td>
     </tr>
     <tr>
         <td>Comunity % AU Only</td>
@@ -95,30 +95,30 @@ table, th, td {
     <tr>
         <td>From <%=params[:start_year]%> to <%=params[:start_year].to_i+1%></td>
         <%for i in 0..11 do%>
-            <td>$ <%= @sales_profit_per_month_by_start_year[i].to_f.round(2)%></td>
+            <td>$ <%= @sales_profit_per_month_by_start_year[i].round(2)%></td>
         <%end%> 
-        <td></td>      
+        <td>$ <%= @ytd_by_start_year[1].round(2)%></td>      
     </tr>
     <tr>
         <td>From <%=params[:end_year]%> to <%=params[:end_year].to_i+1%></td>
         <%for i in 0..11 do%>
-            <td>$ <%= @sales_profit_per_month_by_end_year[i].to_f.round(2)%></td>
+            <td>$ <%= @sales_profit_per_month_by_end_year[i].round(2)%></td>
         <%end%>   
-        <td></td>  
+        <td>$ <%= @ytd_by_end_year[1].round(2)%></td> 
     </tr>
     <tr>
         <td>Diff</td>
         <%for i in 0..11 do%>
-            <td>$ <%= (@sales_profit_per_month_by_end_year[i].to_f-@sales_profit_per_month_by_start_year[i].to_f).round(2)%></td>
+            <td>$ <%= (@sales_profit_per_month_by_end_year[i]-@sales_profit_per_month_by_start_year[i]).round(2)%></td>
         <%end%> 
-        <td></td>
+        <td>$ <%= (@ytd_by_end_year[0]-@ytd_by_start_year[0]).round(2)%></td>
     </tr>
     <tr>
         <td>%</td>
         <%for i in 0..11 do%>
-            <td> <%= ((@sales_profit_per_month_by_end_year[i].to_f-@sales_profit_per_month_by_start_year[i].to_f)*100/@sales_profit_per_month_by_start_year[i]).round(2) %> </td>
+            <td> <%= ((@sales_profit_per_month_by_end_year[i]-@sales_profit_per_month_by_start_year[i])*100/@sales_profit_per_month_by_start_year[i]).round(2) %> </td>
         <%end%>
-        <td></td>
+        <td><%= ((@ytd_by_end_year[0]-@ytd_by_start_year[0])*100/-@ytd_by_start_year[0]).round(2)%></td>
     </tr>
     <tr>
         <td>January - <%=params[:start_year]%> (MTD)</td>

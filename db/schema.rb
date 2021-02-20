@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_213606) do
+ActiveRecord::Schema.define(version: 2021_02_12_141846) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "adminpack"
+  enable_extension "pgagent"
+  enable_extension "plpgsql"
 
   create_table "sales_reports_items", force: :cascade do |t|
     t.float "apn_code"
@@ -28,15 +33,6 @@ ActiveRecord::Schema.define(version: 2021_02_12_213606) do
     t.float "trans_total_extax_value"
     t.float "trans_total_tax"
     t.float "trans_total_discount_given"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "auth_token"
-    t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
   end
 
 end

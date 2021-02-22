@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   	end
   end
   
-  root to: 'sessions#welcome'
+  root to: 'sessions#welcome'  
+  
+  get 'request_api', to: 'sales_reports#request_api'    
 
   get 'report', to: 'sales_reports#report'
   post 'sales_report', to: 'sales_reports#sales_report'

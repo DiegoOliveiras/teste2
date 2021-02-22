@@ -1,4 +1,25 @@
 class SalesReportsController < ApplicationController
+    require "net/http"
+
+    def request_api     
+        url = "https://glacial-basin-87867.herokuapp.com/api/v1/sales/50000"
+
+        @response = HTTParty.get(url)
+        @response.parsed_response
+
+        @result = @response.body
+
+        respond_to do |format|
+            format.json { render :json => JSON.parse(@result) }
+            format.html { render "request_api.html.erb" }
+        end
+    end
+   
+    def import
+        Sales.import(params[:file])
+        redirect_to '/report'
+    end
+
     def report
         @years = Sales.get_uniq_years
     end

@@ -4,9 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 gem 'rack-cors'
-gem 'bcrypt'
-gem 'jwt'
-gem 'simple_command'
 gem 'pg'
 gem 'rspec-rails'
 

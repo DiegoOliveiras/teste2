@@ -1,64 +1,14 @@
 class SalesReportsItemsController < ApplicationController
-    def index
-        @salesReportsItem = SalesReportsItem.all 
-        render json: @salesReportsItem
-    end 
+    require "net/http"
 
-    def show
-        @salesReportsItem = SalesReportsItem.find(params[:id])
-        render json: @salesReportsItem
-    end 
+    def request_api     
+        url = "http://127.0.0.1:3000/api/v1/sales_reports_items/1000"
 
-    def create
-        @salesReportsItem = SalesReportsItem.create(
-            apn_code: params[:apn_code],
-            rrp: params[:rrp],
-            last_buy_price: params[:last_buy_price],
-            item_description: params[:item_description],
-            author: params[:author],
-            product_category: params[:product_category],
-            actual_stock_on_hand: params[:actual_stock_on_hand],
-            trans_date: params[:trans_date],
-            trans_time: params[:trans_time],
-            trans_document: params[:trans_document],
-            trans_reference: params[:trans_reference],
-            trans_quantity: params[:trans_quantity],
-            trans_total_extax_value: params[:trans_total_extax_value],
-            trans_total_tax: params[:trans_total_tax],
-            trans_total_discount_given: params[:trans_total_discount_given]
-        )
-        render json: @salesReportsItem
-    end 
-
-    def update
-        @salesReportsItem = SalesReportsItem.find(params[:id])
-        @salesReportsItem.update(
-            apn_code: params[:apn_code],
-            rrp: params[:rrp],
-            last_buy_price: params[:last_buy_price],
-            item_description: params[:item_description],
-            author: params[:author],
-            product_category: params[:product_category],
-            actual_stock_on_hand: params[:actual_stock_on_hand],
-            trans_date: params[:trans_date],
-            trans_time: params[:trans_time],
-            trans_document: params[:trans_document],
-            trans_reference: params[:trans_reference],
-            trans_quantity: params[:trans_quantity],
-            trans_total_extax_value: params[:trans_total_extax_value],
-            trans_total_tax: params[:trans_total_tax],
-            trans_total_discount_given: params[:trans_total_discount_given]
-        )
-        render json: @salesReportsItem
-    end 
-
-    def destroy
-        @salesReportsItem = SalesReportsItem.all 
-        @salesReportsItem = SalesReportsItem.find(params[:id])
-        @salesReportsItem.destroy
-        render json: @salesReportsItem
-    end 
-
+        resp = Net::HTTP.get_response(URI.parse(url))
+        data = JSON.parse(resp.body)
+        render json: {status: 'SUCCESS', message:'Loaded', data:data},status: :ok
+    end
+   
     def import
         SalesReportsItem.import(params[:file])
         redirect_to '/report'

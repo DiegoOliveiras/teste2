@@ -60,7 +60,6 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    bcrypt (3.1.16)
     bootsnap (1.7.2)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -73,7 +72,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.8)
       concurrent-ruby (~> 1.0)
-    jwt (2.2.2)
     loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -142,7 +140,6 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    simple_command (0.1.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -164,16 +161,13 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  bcrypt
   bootsnap (>= 1.4.4)
   byebug
-  jwt
   pg
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.2, >= 6.1.2.1)
   rspec-rails
-  simple_command
   tzinfo-data
 
 RUBY VERSION

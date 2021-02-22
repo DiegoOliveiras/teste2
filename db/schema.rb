@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_141846) do
+ActiveRecord::Schema.define(version: 2021_02_22_222410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
   enable_extension "pgagent"
   enable_extension "plpgsql"
 
-  create_table "sales_reports_items", force: :cascade do |t|
+  create_table "sales", force: :cascade do |t|
     t.float "apn_code"
     t.float "rrp"
     t.float "last_buy_price"

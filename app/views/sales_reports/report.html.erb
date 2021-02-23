@@ -1,4 +1,4 @@
-<%= form_tag({:action => :sales_report}, multipart: true) do %>
+<%= form_tag({ :action => :sales_report }, multipart: true) do %>
   <%= select_tag(:start_year, options_for_select(@years)) %>
   <%= select_tag(:end_year, options_for_select(@years)) %>
   
